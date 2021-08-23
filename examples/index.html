@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>p5.floodFill</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+    <script src="p5.floodFill.js"></script>
+    <script>
+        new p5(p => {
+            let gfx;
+
+            function drawCircles() {
+                p.randomSeed(5);
+                for (let i = 0; i < 20; i++) {
+                    gfx.ellipse(p.random(p.width), p.random(p.height), p.random(300, 450));
+                }
+            }
+
+            p.setup = _ => {
+                p.createCanvas(1080, 1080);
+                p.pixelDensity(1);
+
+                gfx = p.createGraphics(1080, 1080);
+
+                gfx.noFill();
+                gfx.strokeWeight(1);
+                gfx.stroke(0);
+                gfx.noSmooth();
+
+                p.background(255);
+                drawCircles();
+                p.image(gfx, 0, 0);
+            }
+
+            p.mousePressed = _ => {
+                p.colorMode(p.HSB);
+                p.randomSeed(p.millis());
+                let h = p.random(0, 360);
+                p.floodFill(gfx, p.mouseX, p.mouseY, p.color(h, 50, 100));
+                p.background(255);
+                drawCircles();
+                p.image(gfx, 0, 0);
+            }
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

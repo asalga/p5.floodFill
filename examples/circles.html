@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>p5.floodFill</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+    <script src="p5.floodFill.js"></script>
+    <script>
+        new p5(p => {
+            let gfx;
+
+            p.setup = _ => {
+                p.createCanvas(1080, 1080);
+                p.pixelDensity(1);
+                p.randomSeed(0);
+
+                gfx = p.createGraphics(1080, 1080);
+                gfx.noFill();
+                gfx.strokeWeight(1);
+                gfx.stroke(0);
+
+                for (let i = 0; i < 10; i++) {
+                    gfx.ellipse(p.random(p.width), p.random(p.height), p.random(500, 2000));
+                }
+
+                p.floodFill(gfx, p.width / 2, p.height / 2, p.color(33, 66, 99));
+                p.image(gfx, 0, 0);
+            }
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
