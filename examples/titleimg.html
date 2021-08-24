@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>p5.floodFill - Title Image</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+    <script src="p5.floodFill.js"></script>
+    <script>
+        new p5(p => {
+
+            let drawText = function (sw = 1) {
+                p.push();
+                p.strokeWeight(sw);
+
+                let str = "p5.js";
+                let w = p.textWidth(".");
+                p.translate(p.width / 2, p.height / 2);
+
+                let scl = 0.35;
+                for (let i = 0; i < str.length; i++) {
+                    let x = (i - (str.length - 1) / 2) * scl * w;
+                    p.text(str[i], x, 0);
+                }
+                p.pop();
+            }
+
+            p.setup = _ => {
+                p.createCanvas(1080, 1080);
+                p.pixelDensity(1);
+                p.textFont("monospace");
+                p.textSize(550);
+                p.textAlign(p.CENTER, p.CENTER);
+                p.noFill();
+                p.stroke(0);
+
+                drawText();
+
+                p.colorMode(p.HSB);
+                p.loadPixels();
+
+                for (let x = 0; x < p.width; x += 10) {
+                    for (let y = 0; y < p.height; y += 10) {
+                        let idx = (y * p.width + x) * 4;
+                        if (p.pixels[idx + 0] === 0) {
+                            let h = p.random(360);
+                            p.floodFill(x, y, p.color(h, 50, 100));
+                        }
+                    }
+                }
+
+                drawText(4);
+            }
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -16,16 +16,16 @@
 
             function drawCircles() {
                 p.randomSeed(5);
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 10; i++) {
                     gfx.ellipse(p.random(p.width), p.random(p.height), p.random(300, 450));
                 }
             }
 
             p.setup = _ => {
-                p.createCanvas(1080, 1080);
+                p.createCanvas(500, 500);
                 p.pixelDensity(1);
 
-                gfx = p.createGraphics(1080, 1080);
+                gfx = p.createGraphics(p.width, p.height);
 
                 gfx.noFill();
                 gfx.strokeWeight(1);
