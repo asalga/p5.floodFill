@@ -4,21 +4,24 @@ Flood fill area of a sketch.
 <img src="img.jpg" width="500"/>
 
 ## Usage
+Add the script tag
+```html
+<script src="libs/p5.floodFill.js"></script>
+```
+
 ```js
-new p5(p => {
-    p.setup = _ => {
-        p.createCanvas(500, 500);
-        p.pixelDensity(1);
-        p.randomSeed(0);
-        p.noFill();
+function setup(){
+    createCanvas(500, 500);
+    pixelDensity(1);
+    randomSeed(0);
+    noFill();
 
-        for (let i = 0; i < 20; i++) {
-            p.ellipse(p.random(p.width), p.random(p.height), p.random(400, 1500));
-        }
-
-        p.floodFill(p.width / 2, p.height / 2, p.color(33, 66, 99));
+    for (let i = 0; i < 20; i++) {
+        ellipse(random(width), random(height), random(400, 1500));
     }
-});
+
+    floodFill(width / 2, height / 2, color(33, 66, 99));
+}
 ```
 
 # Development
