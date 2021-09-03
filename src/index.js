@@ -87,7 +87,7 @@
 
             px[idx + 3] = px[idx + 3] > 0 ? px[idx + 3] : a;
             numPixels++;
-            debugger;
+
             stack.push({ x: top.x, y: top.y + 1 });
             stack.push({ x: top.x - 1, y: top.y });
             stack.push({ x: top.x + 1, y: top.y });
