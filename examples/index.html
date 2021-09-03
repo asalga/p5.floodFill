@@ -41,7 +41,7 @@
                 p.colorMode(p.HSB);
                 p.randomSeed(p.millis());
                 let h = p.random(0, 360);
-                p.floodFill(gfx, p.mouseX, p.mouseY, p.color(h, 50, 100));
+                gfx.floodFill(p.mouseX, p.mouseY, p.color(h, 50, 100));
                 p.background(255);
                 drawCircles();
                 p.image(gfx, 0, 0);

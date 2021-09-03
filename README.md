@@ -1,12 +1,16 @@
 # p5.floodFill
 Flood fill area of a sketch.
 
+```js
+floodFill(x, y, color);
+```
+
 <img src="img.jpg" width="500"/>
 
 ## Usage
 Add the script tag
 ```html
-<script src="libs/p5.floodFill.js"></script>
+<script src="p5.floodFill.js"></script>
 ```
 
 ```js
@@ -29,3 +33,10 @@ $ npm run start
 
 # Build
 $ npm run build
+
+# TODO
+ - add threshold option
+ - add stop state if stack becomes too large
+ - create proper documentation
+ - add spatial partition optimization
+ - add linting

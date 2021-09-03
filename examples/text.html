@@ -53,7 +53,6 @@
                 for (let x = 0; x < p.width; x++) {
                     for (let y = 0; y < p.height; y++) {
 
-                        // gfx.loadPixels();
                         let idx = (y * p.width + x) * 4;
 
                         let h = p.random(0, 360);
@@ -63,7 +62,7 @@
                         let col = p.color(n, 50, 100, 0.37);
 
                         if (gfx.pixels[idx + 3] === 0) {
-                            let res = p.floodFill(gfx, x, y, col);
+                            let res = gfx.floodFill(x, y, col);
                         }
                     }
                 }

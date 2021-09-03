@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>p5.floodFill - Predicate</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+    <script src="p5.floodFill.js"></script>
+    <script>
+        new p5(p => {
+
+            p.setup = _ => {
+                p.createCanvas(500, 500);
+                p.pixelDensity(1);
+                p.noFill();
+                p.stroke(0);
+
+                let rad = 100;
+                let [x, y] = [p.width / 2, p.height / 2];
+
+                p.ellipse(x, y, rad * 2);
+
+                p.floodFill(0, 0, p.color(33, 66, 99, 100));
+
+                p.floodFill(x, y, (x, y) => {
+                    let min = p.height / 2 - rad;
+                    let max = p.height / 2 + rad;
+                    let g = p.map(y, min, max, 50, 250);
+                    return p.color(255, g, 0)
+                });
+
+                // cover edge artefacts
+                p.strokeWeight(3);
+                p.ellipse(x, y, rad * 2);
+            }
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
